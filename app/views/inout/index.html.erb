@@ -1,0 +1,41 @@
+<div style="font-family:arial; text-align:center;">
+<div style="padding:30px; width:480px; display:inline-block; margin-top:20px; border:1px solid #e9e9e9;">
+
+	<div style="padding:20px; border:1px solid #e9e9e9;">
+		<h2>Check In</h2>
+		<%= form_tag :action => 'checkin' do %>
+		<p><label for = "inout_name">Name</label>:
+		<%= text_field 'inout', 'name' %></p>
+		<%= hidden_field_tag 'inout[inout]', 'in' %>
+		<%= submit_tag 'Check In' %>
+		<% end %>
+	</div>
+
+        <div style="padding:20px; border:1px solid #e9e9e9; margin-top:20px;">
+		<h2>Check Out</h2>
+		<%= form_tag :action => 'checkout' do %>
+		<p><label for = "inout_name">Name</label>:
+		<%= text_field 'inout', 'name' %></p>
+		<%= hidden_field_tag 'inout[inout]', 'out' %>
+		<%= submit_tag 'Check Out' %>
+		<% end %>
+	</div>
+
+
+
+	<div style="margin-top:30px; text-align:left; ">
+		<div style="display:inline-block; width:200px; "><b>Time</b></div>
+		<div style="display:inline-block; width:200px; margin-left:10px;"><b>Name</b></div>
+		<div style="display:inline-block; width:30px; margin-left:10px;"><b>In/Out</b></div>
+	</div>
+
+	  <% @inouts.each do |c| %>
+		<div style="margin-top:15px; text-align:left;">
+                        <div style="display:inline-block; width:200px; "><%= c.created_at -%></div>
+	  		<div style="display:inline-block; width:200px; margin-left:10px;"><%= c.name -%></div>
+			<div style="display:inline-block; width:30px; margin-left:10px;"><%= c.inout -%></div>
+		</div>
+	  <% end %>
+
+</div>
+</div>
